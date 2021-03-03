@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+
+
 class MainScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Flutter Navi")),
       body: Center(child: new RaisedButton(onPressed: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> SecondScreen()));
+        Navigator.pushNamed(context, '/second');
       },child: new Text("Got2Scr"))),
     );
 
@@ -27,6 +29,9 @@ class SecondScreen extends StatelessWidget{
 }
 void main(){
   runApp(new MaterialApp(
-    home: MainScreen(),
+      routes: {
+        '/':(BuildContext context)=>MainScreen(),
+        '/second' : (BuildContext context) => SecondScreen()
+      }
   ));
 }
