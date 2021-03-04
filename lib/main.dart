@@ -5,33 +5,32 @@ import 'package:flutter/material.dart';
 class MainScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Flutter Navi")),
-      body: Center(child: new RaisedButton(onPressed: (){
-        Navigator.pushNamed(context, '/second');
-      },child: new Text("Got2Scr"))),
-    );
-
+      return Scaffold(
+        appBar: AppBar(title: Text("Вопрос")),
+        body: Center(child: Column(children: [
+          RaisedButton(onPressed: (){
+            Navigator.push(context, PageRouteBuilder(
+                opaque: false, pageBuilder: (BuildContext context,_,__) => MyPopup()));
+          },child: new Text("Вопрос"),)
+        ],),),
+      );
   }
-
 }
-class SecondScreen extends StatelessWidget{
+
+class MyPopup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Flutter Navi 2scr")),
-      body: Center(child: new RaisedButton(onPressed: (){
-        Navigator.pop(context);
-      },child: new Text("back"),),),
+    return AlertDialog(
+      title: new Text('Ответ'),
+      actions: [FlatButton(onPressed: (){Navigator.pop(context);}, child: Text('Да')),
+      FlatButton(onPressed: (){Navigator.pop(context);}, child: Text('нет'))],
     );
   }
 
 }
-void main(){
-  runApp(new MaterialApp(
-      routes: {
-        '/':(BuildContext context)=>MainScreen(),
-        '/second' : (BuildContext context) => SecondScreen()
-      }
+
+void main() {
+  runApp(MaterialApp(
+    home:MainScreen()
   ));
 }
