@@ -13,7 +13,7 @@ class MainScreen extends StatelessWidget{
                 opaque: false, pageBuilder: (BuildContext context,_,__) => MyPopup(),
             transitionsBuilder: (___, Animation<double> animation,____, Widget child){
                   return FadeTransition(opacity:animation,
-                  child: child,);
+                  child: ScaleTransition(scale: animation,child: childgitgit,));
             }));
           },child: new Text("Вопрос"),)
         ],),),
