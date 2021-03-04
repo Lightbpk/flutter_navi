@@ -10,7 +10,11 @@ class MainScreen extends StatelessWidget{
         body: Center(child: Column(children: [
           RaisedButton(onPressed: (){
             Navigator.push(context, PageRouteBuilder(
-                opaque: false, pageBuilder: (BuildContext context,_,__) => MyPopup()));
+                opaque: false, pageBuilder: (BuildContext context,_,__) => MyPopup(),
+            transitionsBuilder: (___, Animation<double> animation,____, Widget child){
+                  return FadeTransition(opacity:animation,
+                  child: child,);
+            }));
           },child: new Text("Вопрос"),)
         ],),),
       );
